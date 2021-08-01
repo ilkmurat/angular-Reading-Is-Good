@@ -1,0 +1,49 @@
+<div class="list row">
+  <div class="col-md-8">
+
+  </div>
+  <div class="col-md-6">
+    <h4>Book List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let book of books; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveBook(book, i)"
+      >
+        {{ book.bookName }} 
+       
+      </li>
+    </ul>
+
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentBook.bookId">
+      <h4>Book</h4>
+      <div>
+        <label><strong>Book Name:</strong></label> {{ currentBook.bookName }}
+      </div>
+      <div>
+        <label><strong>Price:</strong></label>
+        {{ currentBook.price }}
+      </div>
+      <div>
+        <label><strong>Writer:</strong></label>
+        {{ currentBook.writer }}
+      </div>
+      <div>
+        <label><strong>Stock:</strong></label>
+        {{ currentBook.count }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentBook.published ? "Published" : "Pending" }}
+      </div>
+      <p> <button class="btn btn-md btn-info" (click)="addToCart()">Add to Cart</button>
+      </p>
+    <div *ngIf="!currentBook">
+      <br />
+      <p>Please click on a Book...</p>
+    </div>
+  </div>
+</div>

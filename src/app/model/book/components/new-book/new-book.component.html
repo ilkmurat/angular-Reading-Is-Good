@@ -1,0 +1,59 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="bookName">Book Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="bookName"
+          required
+          [(ngModel)]="book.bookName"
+          name="bookName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="writer">Writer</label>
+        <input
+          class="form-control"
+          id="writer"
+          required
+          [(ngModel)]="book.writer"
+          name="writer"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="count">Count</label>
+        <input
+          type="number"
+          class="form-control"
+          id="count"
+          required
+          [(ngModel)]="book.count"
+          name="count"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="count">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          required
+          [(ngModel)]="book.price"
+          name="price"
+        />
+      </div>
+
+      <button (click)="saveBook()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Book was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newBook()">Add</button>
+    </div>
+  </div>
+</div>

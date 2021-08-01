@@ -1,0 +1,36 @@
+
+<div class="list row">
+
+  <div *ngIf="!submitted">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Book Name</th>
+          <th>Count</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of carts">
+          <td>{{ cart.bookName }}</td>
+          <td>{{ cart.count }}</td>
+          <td>{{ cart.totalPrice }}</td>
+          <td>
+            <button class="btn btn-md btn-info" (click)="removeFromCart(cart)">Remove from Cart</button>
+          </td>
+          <td><span class="pointer text-danger"><i class="fas fa-trash-alt"></i></span></td>
+        </tr>
+      </tbody>
+      <tr>
+        <td></td>
+        <td>Total: {{ total }} TRY</td>
+    </tr>
+    </table>
+    <button (click)="makeOrder()" class="btn btn-success">Make Order</button>
+  </div>
+
+  <div *ngIf="submitted">
+    <h4>Order was submitted successfully!</h4>
+  </div>
+
+</div>

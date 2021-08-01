@@ -1,0 +1,47 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <div class="input-group-append">
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Order List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let order of orders; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveOrder(order, i)"
+      >
+       {{order.customerOrderId}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentOrder.customerOrderId">
+      <h4>Order</h4>
+      <div>
+        <label><strong>Order Date:</strong></label> {{ currentOrder.cdate }}
+      </div>
+      <div>
+        <label><strong>Total Price:</strong></label>
+        {{ currentOrder.totalPrice }} TRY
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentOrder.published ? "Published" : "OK" }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/orders/{{ currentOrder.customerOrderId }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentOrder">
+      <br />
+      <p>Please click on a Order...</p>
+    </div>
+  </div>
+</div>
